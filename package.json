@@ -1,0 +1,8 @@
+{
+  "name": "experimental-thinking",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "./build.bash",
+    "start": "./start.bash"
+  }
+}
