@@ -13,7 +13,17 @@ export type RegOutput = {
 
 /* attempt */
 
-export type answer = 0 | 1
+export enum AnswerColorChoice {
+  red,  // 1/3
+  blue, // 2/3
+}
+
+export enum AnswerColorsCompare {
+  different, // 1/3
+  same, // 2/3
+}
+
+export type answer = AnswerColorChoice | AnswerColorsCompare
 
 export type AttemptInput = {
   answer: answer
@@ -22,6 +32,7 @@ export type AttemptInput = {
 export type AttemptOutput = {
   result: boolean
 }
+
 
 /* add email */
 

@@ -12,6 +12,7 @@
 </script>
 
 <script lang="ts">
+  import { AnswerColorsCompare } from '@/common/api'
   import { maxAttemptsCount } from '@/common/constants'
   import { storage } from '@/data/storage'
   import { CardColor, randomColor, otherColor } from '@/data/color'
@@ -23,11 +24,6 @@
   export let onAnswer: AnswerHandler
 
   let card: Card
-  
-  enum Answer {
-    different, // 1/3
-    same, // 2/3
-  }
 
   const persons = (
     storage.persons.length 
@@ -99,7 +95,7 @@
     text="одинаковые"
     color="unknown"
     onClick={() => onAnswer(
-      Answer.same,
+      AnswerColorsCompare.same,
       onResult(result => result ? front : otherColor(front)
     ))}
   />
@@ -107,7 +103,7 @@
     text="разные"
     color="unknown"
     onClick={() => onAnswer(
-      Answer.different,
+      AnswerColorsCompare.different,
       onResult(result => result ? otherColor(front) : front)
     )}
   />

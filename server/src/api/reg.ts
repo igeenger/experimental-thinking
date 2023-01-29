@@ -47,6 +47,7 @@ router.post('/reg', async (request, response) => {
 
     variant,
     attempts: [],
+    rightAttemptsCount: 0,
   })
 
   const output: RegOutput = { variant }

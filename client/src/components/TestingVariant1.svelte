@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { AnswerColorChoice } from '@/common/api'
   import { CardColor, otherColor } from '@/data/color'
   import type { AnswerHandler } from '@/data/answer'
 
@@ -8,11 +9,6 @@
   export let onAnswer: AnswerHandler
 
   let card: Card
-  
-  enum Answer {
-    red,  // 1/3
-    blue, // 2/3
-  }
   
   let back: CardColor | undefined
 
@@ -61,11 +57,11 @@
   <Button
     text="красный"
     color="red"
-    onClick={() => onAnswer(Answer.red, onResult(CardColor.red))}
+    onClick={() => onAnswer(AnswerColorChoice.red, onResult(CardColor.red))}
   />
   <Button
     text="синий"
     color="blue"
-    onClick={() => onAnswer(Answer.blue, onResult(CardColor.blue))}
+    onClick={() => onAnswer(AnswerColorChoice.blue, onResult(CardColor.blue))}
   />
 </div>

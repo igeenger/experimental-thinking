@@ -4,7 +4,9 @@ import Queue from 'promise-queue'
 
 import { config } from '@/config'
 import type { User } from '@/types'
+
 import { UserOutput } from '@/common/api'
+import { maxAttemptsCount } from '@/common/constants'
 
 const reconnectCount = 3
 
@@ -139,6 +141,7 @@ class GoogleTableDatabase implements IGoogleTableDatabase {
             user.variant,
             ...user.attempts,
             resultPercent,
+            user.rightAttemptsCount / maxAttemptsCount,
             isRepeating,
             user.id,
           ]

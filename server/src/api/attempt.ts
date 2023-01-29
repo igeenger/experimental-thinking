@@ -1,4 +1,4 @@
-import type { AttemptInput, AttemptOutput } from '@/common/api'
+import { AnswerColorChoice, AnswerColorsCompare, AttemptInput, AttemptOutput } from '@/common/api'
 import { maxAttemptsCount } from '@/common/constants'
 import { validate } from '@/utils/validator'
 import { randomNaturalNumber } from '@/utils/random'
@@ -32,6 +32,14 @@ router.post('/attempt', async (request, response) => {
   )
 
   user.attempts.push(Number(wasRightAnswer)) // 0,1
+
+  if (
+    user.variant === 1 && input.answer === AnswerColorChoice.blue
+    || user.variant === 2 && input.answer === AnswerColorsCompare.same
+    || user.variant === 3 && input.answer === AnswerColorsCompare.same
+  ) {
+    user.rightAttemptsCount++
+  }
 
   if (user.attempts.length === maxAttemptsCount) {
     await db.appendUser(user, cash.hasIP(user.ip))

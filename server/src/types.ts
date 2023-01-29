@@ -9,6 +9,7 @@ export type User = {
 
   variant: number
   attempts: number[]
+  rightAttemptsCount: number
 }
 
 export type Users = Map<string, User>
